@@ -28,7 +28,7 @@ class Registro2 extends Generico2
             'precision'=>2,
             'required'=>true),
         'filler2'=>array(            //32.3P
-            'tamanho'=>371, 
+            'tamanho'=>370, 
             'default'=>' ',
             'tipo'=>'alfa',
             'required'=>true),
