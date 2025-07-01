@@ -63,7 +63,7 @@ class Registro0 extends Generico0
         ),
         'numero_inscricao' => array(
             'tamanho' => 15,
-            'default' => '',
+            'default' => '0',
             'tipo' => 'int',
             'required' => true
         ),
@@ -74,7 +74,7 @@ class Registro0 extends Generico0
             'required' => true
         ),
         'filler12' => array(
-            'tamanho' => 4,
+            'tamanho' => 5,
             'default' => '0',
             'tipo' => 'int',
             'required' => true
@@ -87,12 +87,12 @@ class Registro0 extends Generico0
         ),
         'codigo_beneficiario_dv' => array(
             'tamanho' => 1,
-            'default' => '0',
-            'tipo' => 'int',
+            'default' => ' ',
+            'tipo' => 'alfa',
             'required' => true
         ),
         'filler2' => array(
-            'tamanho' => 25,
+            'tamanho' => 24,
             'default' => ' ',
             'tipo' => 'alfa',
             'required' => true
