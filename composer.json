@@ -1,13 +1,13 @@
 {
-	"name": "openboleto/opencnabphp",
+	"name": "softworks/opencnabphp",
 	"type": "library",
-	"description": "Biblioteca multibanco para geração e leitura de arquivos Cnab de remessa e retorno",
+	"description": "Fork do OpenCnabPHP com ajustes personalizados",
 	"keywords": ["boleto", "remessa", "retorno", "cnabphp", "cnab240", "cnab400","itau","bradesco","caixa","santander","sicoob","uniprime"],
 	"license": "MIT",
 	"authors": [
 		{
-			"name": "Rogerio Muniz de Castro",
-			"email": "rogeriomunizcastro@gmail.com"
+			"name": "André Corneta",
+            "email": "andre.corneta@softworksbrasil.com.br"
 		}
 	],
 	"autoload": {
