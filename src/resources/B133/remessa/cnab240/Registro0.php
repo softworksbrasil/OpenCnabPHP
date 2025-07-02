@@ -60,7 +60,7 @@ class Registro0 extends Generico0
             'default'=>'',
             'tipo'=>'int',
             'required'=>true),
-        'numero_convenio'=>array(
+        'codigo_convenio'=>array(
             'tamanho'=>20,
             'default'=>'',
             'tipo'=>'int',
@@ -133,7 +133,7 @@ class Registro0 extends Generico0
         'densidade_gravacao'=>array(
             'tamanho'=>5,
             'default'=>'00000',
-            'tipo'=>'int',
+            'tipo'=>'alfa',
             'required'=>true),
         'filler4'=>array(
             'tamanho'=>20,

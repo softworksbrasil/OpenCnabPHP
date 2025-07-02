@@ -82,7 +82,7 @@ class Registro1 extends Generico1
             'default'=>'',
             'tipo'=>'int',
             'required'=>true),
-        'numero_convenio'=>array(
+        'codigo_convenio'=>array(
             'tamanho'=>20,
             'default'=>'',
             'tipo'=>'int',

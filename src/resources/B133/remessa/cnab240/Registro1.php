@@ -79,7 +79,7 @@ class Registro1 extends Generico1
             'default'=>'',
             'tipo'=>'int',
             'required'=>true),
-        'numero_convenio'=>array(
+        'codigo_convenio'=>array(
                 /* 34-37 = Zero
                    38-40 = Código da Carteira (009)
                    41-45 = Código da Cooperativa

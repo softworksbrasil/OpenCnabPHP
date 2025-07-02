@@ -40,6 +40,7 @@ class Especie {
     private $c6bank = array();
     private $bv = array();
     private $abc = array();
+    private $cresol = array();
     private $banco;
 
     public function __construct($banco = null) {
@@ -147,24 +148,6 @@ class Especie {
         $this->sicredi['J'] = array('abr' => "TS", 'txt' => 'Triplicata de Serviço');
         $this->sicredi['K'] = array('abr' => "DIV", 'txt' => 'Outros');
 
-        // $this->santander[1] = array('abr' => "DM", 'txt' => 'Duplicata Mercantil');
-        // $this->santander[2] = array('abr' => "NP", 'txt' => 'Nota Promissória');
-            //$this->santander[3] = array('abr' => "NS", 'txt' => 'Nota de Seguro');
-        // $this->santander[5] = array('abr' => "RC", 'txt' => 'Recibo');
-        // $this->santander[6] = array('abr' => "DR", 'txt' => 'Duplicata Rural');
-        // $this->santander[8] = array('abr' => "LC", 'txt' => 'Letra de Câmbio');
-            //$this->santander[9] = array('abr' => "WRT", 'txt' => 'Warrant');
-            //$this->santander[10] = array('abr' => "CH", 'txt' => 'Cheque');
-        // $this->santander[12] = array('abr' => "DS", 'txt' => 'Duplicata de Serviço');
-            //$this->santander[13] = array('abr' => "ND", 'txt' => 'Nota de Débito');
-            //$this->santander[14] = array('abr' => "TM", 'txt' => 'Triplicata Mercantil');
-            //$this->santander[15] = array('abr' => "TS", 'txt' => 'Triplicata de Serviço');
-            //$this->santander[18] = array('abr' => "FAT", 'txt' => 'Fatura');
-        // $this->santander[20] = array('abr' => "AP", 'txt' => 'Apólice de Seguros');
-            //$this->santander[21] = array('abr' => "ME", 'txt' => 'Mensalidade escolar');
-            //$this->santander[22] = array('abr' => "ME", 'txt' => 'Parcela de ConsÃ³rcio');
-            //$this->santander[99] = array('abr' => "DIV", 'txt' => 'Outros');
-
         $this->santander[2] = array('abr' => "DM", 'txt' => 'DUPLICATA MERCANTIL');
         $this->santander[4] = array('abr' => "DS", 'txt' => 'DUPLICATA DE SERVICO');
         $this->santander[7] = array('abr' => "LC", 'txt' => 'LETRA DE CÂMBIO (SOMENTE PARA BANCO 353)');
@@ -205,6 +188,21 @@ class Especie {
         $this->bv[4] = array('abr' => "DS", 'txt' => 'Duplicata de Serviço');
         $this->bv[31] = array('abr' => "CC", 'txt' => 'Cartão de Crédito');
 
+        $this->cresol[1] = array('abr' => "CH", 'txt' => 'Cheque');
+        $this->cresol[2] = array('abr' => "DM", 'txt' => 'Duplicata mercantil');
+        $this->cresol[4] = array('abr' => "DS", 'txt' => 'Duplicata de serviço');
+        $this->cresol[6] = array('abr' => "DR", 'txt' => 'Duplicata rural');
+        $this->cresol[7] = array('abr' => "LC", 'txt' => 'Letra de câmbio');
+        $this->cresol[12] = array('abr' => "NP", 'txt' => 'Nota promissória');
+        $this->cresol[17] = array('abr' => "RC", 'txt' => 'Recibo');
+        $this->cresol[19] = array('abr' => "ND", 'txt' => 'Nota de débito');
+        $this->cresol[26] = array('abr' => "WRT", 'txt' => 'Warrant');
+        $this->cresol[27] = array('abr' => "DAE", 'txt' => 'Dívida ativa de estado');
+        $this->cresol[28] = array('abr' => "DAM", 'txt' => 'Dívida ativa de município');
+        $this->cresol[29] = array('abr' => "DAU", 'txt' => 'Dívida ativa da união');
+        $this->cresol[30] = array('abr' => "EC", 'txt' => 'Encargos condominiais');
+        $this->cresol[99] = array('abr' => "DIV", 'txt' => 'Outros');
+
 
         $this->res['104'] = $this->caixa;
         $this->res['341'] = $this->itau;
@@ -217,6 +215,7 @@ class Especie {
         $this->res['084'] = $this->bradesco;
         $this->res['246'] = $this->abc;
         $this->res['655'] = $this->bv;
+        $this->res['133'] = $this->cresol;
 
         $this->banco = $this->res[$banco];
     }
