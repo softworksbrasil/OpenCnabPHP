@@ -185,7 +185,7 @@ class Registro3P extends Generico3
             'required'=>true),
         'aceite'=>array(
             'tamanho'=>1,
-            'default'=>'',
+            'default'=>'N',
             'tipo'=>'alfa',
             'required'=>true),
         'data_emissao'=>array(
