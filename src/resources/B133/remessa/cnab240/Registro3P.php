@@ -112,7 +112,7 @@ class Registro3P extends Generico3
             'default'=>'0',
             'tipo'=>'int',
             'required'=>true),
-        'codigo_carteira'=>array(
+        'cod_carteira'=>array(
             'tamanho'=>1,
             'default'=>'0',
             'tipo'=>'int',
