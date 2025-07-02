@@ -117,12 +117,12 @@ class Registro3R extends Generico3
             'default'=>' ',
             'tipo'=>'alfa',
             'required'=>true),
-        'mensagem_pagador_3'=>array(
+        'mensagem_3'=>array(
             'tamanho'=>40,
             'default'=>' ',
             'tipo'=>'alfa',
             'required'=>true),
-        'mensagem_pagador_4'=>array(
+        'mensagem_4'=>array(
             'tamanho'=>40,
             'default'=>' ',
             'tipo'=>'alfa',
@@ -169,7 +169,7 @@ class Registro3R extends Generico3
             'required'=>true),
         'aviso_debito'=>array(
             'tamanho'=>1,
-            'default'=>' ',
+            'default'=>'0',
             'tipo'=>'alfa',
             'required'=>true),
         'filler3'=>array(

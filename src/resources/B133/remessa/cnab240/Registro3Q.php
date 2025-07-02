@@ -64,12 +64,12 @@ class Registro3Q extends Generico3
             'default'=>'01',
             'tipo'=>'int',
             'required'=>true),
-        'tipo_inscricao_pagador'=>array(
+        'tipo_inscricao'=>array(
             'tamanho'=>1,
             'default'=>'1', // 1=CPF, 2=CNPJ
             'tipo'=>'int',
             'required'=>true),
-        'numero_inscricao_pagador'=>array(
+        'numero_inscricao'=>array(
             'tamanho'=>15,
             'default'=>'',
             'tipo'=>'int',

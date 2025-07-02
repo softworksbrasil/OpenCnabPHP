@@ -72,7 +72,7 @@ class Registro3P extends Generico3
             'default'=>'',
             'tipo'=>'int',
             'required'=>true),
-        'digito_agencia'=>array(
+        'agencia_dv'=>array(
             'tamanho'=>1,
             'default'=>' ',
             'tipo'=>'alfa',
@@ -82,7 +82,7 @@ class Registro3P extends Generico3
             'default'=>'',
             'tipo'=>'int',
             'required'=>true),
-        'digito_conta'=>array(
+        'conta_dv'=>array(
             'tamanho'=>1,
             'default'=>'',
             'tipo'=>'alfa',
@@ -109,7 +109,7 @@ class Registro3P extends Generico3
             'required'=>true),
         'digito_nosso_numero'=>array(
             'tamanho'=>1,
-            'default'=>'',
+            'default'=>'0',
             'tipo'=>'int',
             'required'=>true),
         'codigo_carteira'=>array(
@@ -127,17 +127,17 @@ class Registro3P extends Generico3
             'default'=>'0',
             'tipo'=>'alfa',
             'required'=>true),
-        'identificacao_emissao'=>array(
+        'emissao_boleto'=>array(
             'tamanho'=>1,
-            'default'=>'2', //“1” = Banco Emitente; “2” = Cliente Emitente
+            'default'=>'2', //"1" = Banco Emitente; "2" = Cliente Emitente
             'tipo'=>'int',
             'required'=>true),
-        'distribuicao_titulo'=>array(
+        'entrega_boleto'=>array(
             'tamanho'=>1,
             'default'=>'',
             'tipo'=>'alfa',
             'required'=>true),
-        'numero_documento'=>array(
+        'numero_inscricao'=>array(
             'tamanho'=>15,
             'default'=>'',
             'tipo'=>'alfa',
@@ -242,7 +242,7 @@ class Registro3P extends Generico3
             'default'=>' ',
             'tipo'=>'alfa',
             'required'=>true),
-        'codigo_protesto'=>array(
+        'protestar'=>array(
             'tamanho'=>1,
             'default'=>'3', // 1=protestar em x dias corridos; 3=não protestar
             'tipo'=>'int',
@@ -252,7 +252,7 @@ class Registro3P extends Generico3
             'default'=>'00',
             'tipo'=>'int',
             'required'=>true),
-        'codigo_baixa'=>array(
+        'baixar'=>array(
             'tamanho'=>1,
             'default'=>'1', 
             'tipo'=>'int',
