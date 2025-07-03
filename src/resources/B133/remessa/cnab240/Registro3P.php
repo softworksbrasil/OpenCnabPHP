@@ -270,7 +270,7 @@ class Registro3P extends Generico3
         'filler3'=>array(
             'tamanho'=>11,
             'default'=>'00000000000',
-            'tipo'=>'int',
+            'tipo'=>'alfa',
             'required'=>true)
     );
 }

@@ -87,8 +87,8 @@ class Registro0 extends Generico0
             'required'=>true),
         'filler2'=>array(
             'tamanho'=>1,
-            'default'=>'0',
-            'tipo'=>'int',
+            'default'=>' ',
+            'tipo'=>'alfa',
             'required'=>true),
         'nome_empresa'=>array(
             'tamanho'=>30,
@@ -123,7 +123,7 @@ class Registro0 extends Generico0
         'numero_sequencial_arquivo'=>array(
             'tamanho'=>6,
             'default'=>'0',
-            'tipo'=>'alfa',
+            'tipo'=>'int',
             'required'=>true),
         'versao_layout'=>array(
             'tamanho'=>3,
@@ -146,11 +146,6 @@ class Registro0 extends Generico0
             'tipo'=>'alfa',
             'required'=>true),
         'filler6'=>array(
-            'tamanho'=>20,
-            'default'=>' ',
-            'tipo'=>'alfa',
-            'required'=>true),
-        'filler7'=>array(
             'tamanho'=>29,
             'default'=>' ',
             'tipo'=>'alfa',

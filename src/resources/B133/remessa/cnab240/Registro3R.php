@@ -135,12 +135,12 @@ class Registro3R extends Generico3
         'codigo_ocorrencia_pagador'=>array(
             'tamanho'=>8,
             'default'=>'00000000',
-            'tipo'=>'int',
+            'tipo'=>'alfa',
             'required'=>true),
         'codigo_banco_conta_debito'=>array(
             'tamanho'=>3,
             'default'=>'000',
-            'tipo'=>'int',
+            'tipo'=>'alfa',
             'required'=>true),
         'codigo_agencia_conta_debito'=>array(
             'tamanho'=>5,
@@ -155,7 +155,7 @@ class Registro3R extends Generico3
         'conta_corrente_debito'=>array(
             'tamanho'=>12,
             'default'=>'000000000000',
-            'tipo'=>'int',
+            'tipo'=>'alfa',
             'required'=>true),
         'digito_conta_corrente_debito'=>array(
             'tamanho'=>1,

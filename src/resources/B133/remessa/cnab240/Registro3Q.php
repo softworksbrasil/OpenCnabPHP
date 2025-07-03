@@ -62,7 +62,7 @@ class Registro3Q extends Generico3
         'codigo_movimento'=>array(
             'tamanho'=>2,
             'default'=>'01',
-            'tipo'=>'int',
+            'tipo'=>'alfa',
             'required'=>true),
         'tipo_inscricao'=>array(
             'tamanho'=>1,
@@ -111,8 +111,8 @@ class Registro3Q extends Generico3
             'required'=>true),
         'numero_inscricao_avalista'=>array(
             'tamanho'=>15,
-            'default'=>'0',
-            'tipo'=>'int',
+            'default'=>'000000000000000',
+            'tipo'=>'alfa',
             'required'=>true),
         'nome_avalista'=>array(
             'tamanho'=>40,

@@ -93,7 +93,7 @@ class Registro1 extends Generico1
         'agencia'=>array(
             'tamanho'=>5,
             'default'=>'',
-            'tipo'=>'alfa',
+            'tipo'=>'int',
             'required'=>true),
         'agencia_dv'=>array(
             'tamanho'=>1,
@@ -145,7 +145,7 @@ class Registro1 extends Generico1
             'default'=>'00000000',
             'tipo'=>'int',
             'required'=>true),
-        'filler4'=>array(
+        'filler3'=>array(
             'tamanho'=>33,
             'default'=>' ',
             'tipo'=>'alfa',
