@@ -155,7 +155,7 @@ class Registro3P extends Generico3
             'required'=>true),
         'agencia_cobradora'=>array(
             'tamanho'=>5,
-            'default'=>'0',
+            'default'=>'00000',
             'tipo'=>'int',
             'required'=>true),
         'digito_agencia_cobradora'=>array(
@@ -180,7 +180,7 @@ class Registro3P extends Generico3
                 99 = Outros
             */
             'tamanho'=>2,
-            'default'=>'2',
+            'default'=>'02',
             'tipo'=>'int',
             'required'=>true),
         'aceite'=>array(
@@ -190,7 +190,7 @@ class Registro3P extends Generico3
             'required'=>true),
         'data_emissao'=>array(
             'tamanho'=>8,
-            'default'=>'00000000',
+            'default'=>'',
             'tipo'=>'int',
             'required'=>true),
         'codigo_juros'=>array(
@@ -200,7 +200,7 @@ class Registro3P extends Generico3
             'required'=>true),
         'data_juros'=>array(
             'tamanho'=>8,
-            'default'=>'00000000',
+            'default'=>'',
             'tipo'=>'int',
             'required'=>true),
         'vlr_juros'=>array(
@@ -216,7 +216,7 @@ class Registro3P extends Generico3
             'required'=>true),
         'data_desconto'=>array(
             'tamanho'=>8,
-            'default'=>'00000000',
+            'default'=>'',
             'tipo'=>'int',
             'required'=>true),
         'vlr_desconto'=>array(
@@ -239,7 +239,7 @@ class Registro3P extends Generico3
             'required'=>true),
         'identificacao_titulo_empresa'=>array(
             'tamanho'=>25,
-            'default'=>' ',
+            'default'=>'',
             'tipo'=>'alfa',
             'required'=>true),
         'protestar'=>array(
@@ -249,7 +249,7 @@ class Registro3P extends Generico3
             'required'=>true),
         'prazo_protesto'=>array(
             'tamanho'=>2,
-            'default'=>'00',
+            'default'=>'',
             'tipo'=>'int',
             'required'=>true),
         'baixar'=>array(
@@ -259,7 +259,7 @@ class Registro3P extends Generico3
             'required'=>true),
         'prazo_baixa'=>array(
             'tamanho'=>3,
-            'default'=>'000',
+            'default'=>'',
             'tipo'=>'alfa',
             'required'=>true),
         'codigo_moeda'=>array(
