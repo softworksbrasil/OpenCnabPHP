@@ -75,7 +75,7 @@ class Registro3R extends Generico3
             'tipo'=>'int',
             'required'=>true),
         'vlr_desconto2'=>array(
-            'tamanho'=>15,
+            'tamanho'=>13,
             'default'=>'0',
             'tipo'=>'decimal',
             'precision'=>2,
@@ -91,7 +91,7 @@ class Registro3R extends Generico3
             'tipo'=>'int',
             'required'=>true),
         'vlr_desconto3'=>array(
-            'tamanho'=>15,
+            'tamanho'=>13,
             'default'=>'0',
             'tipo'=>'decimal',
             'precision'=>2,
@@ -107,7 +107,7 @@ class Registro3R extends Generico3
             'tipo'=>'int',
             'required'=>true),
         'vlr_multa'=>array(
-            'tamanho'=>15,
+            'tamanho'=>13,
             'default'=>'0', // com duas casas decimais (de 0,00% à 99,99%)
             'tipo'=>'decimal',
             'precision'=>2,
