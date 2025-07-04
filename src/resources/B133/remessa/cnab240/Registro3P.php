@@ -105,7 +105,7 @@ class Registro3P extends Generico3
         'nosso_numero'=>array(
             'tamanho'=>11,
             'default'=>'',
-            'tipo'=>'alfa',
+            'tipo'=>'int',
             'required'=>true),
         'nosso_numero_dv'=>array(
             'tamanho'=>1,
@@ -273,6 +273,14 @@ class Registro3P extends Generico3
             'tipo'=>'alfa',
             'required'=>true)
     );
+
+    /**
+     * Sobrescreve a informação do Nosso Número incluindo o DV ao final
+     * @param int $value
+     */
+    protected function set_nosso_numero($value) {
+        $this->data['nosso_numero'] = $value;
+    }
 
     protected function set_nosso_numero_dv($value) {       
         $this->data['nosso_numero_dv'] = self::digitoVerificadorNossoNumero( str_pad($this->entryData['carteira_banco'], 2, 0, STR_PAD_LEFT), str_pad($this->data['nosso_numero'], 11, 0, STR_PAD_LEFT) );
