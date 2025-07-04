@@ -120,7 +120,7 @@ class Registro3P extends Generico3
         'filler6'=>array( //forma_cadastramento
             'tamanho'=>1,
             'default'=>'0',
-            'tipo'=>'int',
+            'tipo'=>'alfa',
             'required'=>true),
         'filler7'=>array( //tipo_documento
             'tamanho'=>1,
@@ -279,7 +279,7 @@ class Registro3P extends Generico3
      * @param int $value
      */
     protected function set_nosso_numero($value) {
-        $this->data['nosso_numero'] = $value;
+        $this->data['nosso_numero'] = str_pad($value, 11, 0, STR_PAD_LEFT);
     }
 
     protected function set_nosso_numero_dv($value) {       
