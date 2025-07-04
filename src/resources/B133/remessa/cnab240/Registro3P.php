@@ -144,7 +144,7 @@ class Registro3P extends Generico3
             'required'=>true),
         'data_vencimento'=>array(
             'tamanho'=>8,
-            'default'=>'00000000',
+            'default'=>'',
             'tipo'=>'int',
             'required'=>true),
         'valor'=>array(
