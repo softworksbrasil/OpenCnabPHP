@@ -239,7 +239,7 @@ class Registro3P extends Generico3
             'required'=>true),
         'identificacao_titulo_empresa'=>array(
             'tamanho'=>25,
-            'default'=>'',
+            'default'=>' ',
             'tipo'=>'alfa',
             'required'=>true),
         'protestar'=>array(
