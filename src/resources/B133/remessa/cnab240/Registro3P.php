@@ -107,15 +107,15 @@ class Registro3P extends Generico3
             'default'=>'',
             'tipo'=>'alfa',
             'required'=>true),
-        'digito_nosso_numero'=>array(
+        'nosso_numero_dv'=>array(
             'tamanho'=>1,
             'default'=>'0',
             'tipo'=>'int',
             'required'=>true),
-        'filler5'=>array( //cod_carteira
+        'filler6'=>array( //cod_carteira
             'tamanho'=>1,
             'default'=>'0',
-            'tipo'=>'int',
+            'tipo'=>'alfa',
             'required'=>true),
         'filler6'=>array( //forma_cadastramento
             'tamanho'=>1,
@@ -273,5 +273,33 @@ class Registro3P extends Generico3
             'tipo'=>'alfa',
             'required'=>true)
     );
+
+    protected function set_nosso_numero_dv($value) {       
+        $this->data['nosso_numero_dv'] = self::digitoVerificadorNossoNumero( str_pad($this->entryData['carteira_banco'], 2, 0, STR_PAD_LEFT), str_pad($this->data['nosso_numero'], 11, 0, STR_PAD_LEFT) );
+    }
+
+    protected static function digitoVerificadorNossoNumero($carteira, $numero)
+    {
+        $base = $carteira . $numero; // Concatena carteira (2) + número (11) = 13 dígitos
+        $soma = 0;
+        $peso = 2;
+
+        // Percorre da direita para a esquerda
+        for ($i = strlen($base) - 1; $i >= 0; $i--) {
+            $soma += $base[$i] * $peso;
+            $peso = $peso == 7 ? 2 : $peso + 1;
+        }
+
+        $resto = $soma % 11;
+        $digito = $resto == 0 ? 0 : 11 - $resto;
+        
+        // Se o dígito for maior que 9, retorna 0 (conforme laravel-boleto)
+        if ($digito > 9) {
+            $digito = "P";
+        }
+
+        // Retorna como 1 dígito
+        return $digito;
+    }
 }
 ?> 
