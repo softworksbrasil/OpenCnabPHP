@@ -105,7 +105,7 @@ class Registro3P extends Generico3
         'nosso_numero'=>array(
             'tamanho'=>11,
             'default'=>'',
-            'tipo'=>'int',
+            'tipo'=>'alfa',
             'required'=>true),
         'digito_nosso_numero'=>array(
             'tamanho'=>1,
