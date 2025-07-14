@@ -25,6 +25,7 @@
  */
 namespace CnabPHP\resources\B133\remessa\cnab240;
 use CnabPHP\resources\generico\remessa\cnab240\Generico3;
+use CnabPHP\RemessaAbstract;
 
 class Registro3P extends Generico3
 {
@@ -308,6 +309,16 @@ class Registro3P extends Generico3
 
         // Retorna como 1 dígito
         return $digito;
+    }
+
+    public function inserirDetalhe($data) {
+        $class = 'CnabPHP\resources\\B' . RemessaAbstract::$banco . '\remessa\\' . RemessaAbstract::$layout . '\Registro3Q';
+        $this->children [] = new $class($data);
+        // Chamar função para inserir nosso número
+        if (isset($data ['codigo_desconto2']) || isset($data ['codigo_desconto3']) || isset($data ['vlr_multa']) || isset($data ['informacao_pagador'])) {
+            $class = 'CnabPHP\resources\\B' . RemessaAbstract::$banco . '\remessa\\' . RemessaAbstract::$layout . '\Registro3R';
+            $this->children [] = new $class($data);
+        }
     }
 }
 ?> 
