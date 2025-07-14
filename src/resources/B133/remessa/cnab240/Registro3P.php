@@ -275,6 +275,12 @@ class Registro3P extends Generico3
             'required'=>true)
     );
 
+    public function __construct($data = null) {
+        if (empty($this->data))
+            parent::__construct($data);
+        $this->inserirDetalhe($data);
+    }
+    
     /**
      * Sobrescreve a informação do Nosso Número incluindo o DV ao final
      * @param int $value

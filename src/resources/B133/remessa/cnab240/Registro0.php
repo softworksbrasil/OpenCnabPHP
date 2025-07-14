@@ -25,6 +25,7 @@
  */
 namespace CnabPHP\resources\B133\remessa\cnab240;
 use \CnabPHP\resources\generico\remessa\cnab240\Generico0;
+use CnabPHP\RemessaAbstract;
 
 class Registro0 extends Generico0
 {
@@ -60,7 +61,7 @@ class Registro0 extends Generico0
             'default'=>'',
             'tipo'=>'int',
             'required'=>true),
-        'conta'=>array( // Número do convênio de cobrança Cresol = Número da Conta do Cooperado sem o dígito verificador
+        'numero_convenio'=>array( // Número do convênio de cobrança Cresol = Número da Conta do Cooperado sem o dígito verificador
             'tamanho'=>20,
             'default'=>'0',
             'tipo'=>'int',
@@ -151,5 +152,9 @@ class Registro0 extends Generico0
             'tipo'=>'alfa',
             'required'=>true)
     );
+
+    protected function set_numero_convenio($value) {
+        $this->data['numero_convenio'] = RemessaAbstract::$entryData['conta'];
+    }
 }
 ?> 
