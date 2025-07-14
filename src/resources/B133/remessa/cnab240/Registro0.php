@@ -62,7 +62,7 @@ class Registro0 extends Generico0
             'required'=>true),
         'conta'=>array( // Número do convênio de cobrança Cresol = Número da Conta do Cooperado sem o dígito verificador
             'tamanho'=>20,
-            'default'=>'',
+            'default'=>'0',
             'tipo'=>'int',
             'required'=>true),
         'agencia'=>array(
