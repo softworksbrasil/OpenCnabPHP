@@ -61,8 +61,10 @@ class Registro3Q extends Generico3
             'required'=>true),
         'codigo_movimento'=>array(
             'tamanho'=>2,
-            'default'=>'01',
-            'tipo'=>'alfa',
+            'default'=>'01', // 01 = Remessa; 02 = Pedido de Baixa; 04 = Concessão de Abatimento; 
+                             // 05 = Cancelamento de Abatimento; 06 = Alteração de Vencimento; 09 = Protestar
+                             // 10 = Cancela/Sustação da instrução de protesto; 11 = Sustar Protesto e Manter em Carteira
+            'tipo'=>'int',
             'required'=>true),
         'tipo_inscricao'=>array(
             'tamanho'=>1,
