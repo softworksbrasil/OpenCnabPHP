@@ -113,8 +113,8 @@ class Registro0 extends Generico0
             'required'=>true),
         'data_geracao'=>array(
             'tamanho'=>8,
-            'default'=>'',
-            'tipo'=>'int',
+            'default'=>'0',
+            'tipo'=>'date',
             'required'=>true),
         'hora_geracao'=>array(
             'tamanho'=>6,

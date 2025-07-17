@@ -103,8 +103,8 @@ class Registro3R extends Generico3
             'required'=>true),
         'data_multa'=>array(
             'tamanho'=>8,
-            'default'=>'00000000',
-            'tipo'=>'int',
+            'default'=>'0',
+            'tipo'=>'date',
             'required'=>true),
         'vlr_multa'=>array(
             'tamanho'=>13,
