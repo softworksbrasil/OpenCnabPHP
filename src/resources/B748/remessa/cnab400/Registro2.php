@@ -65,21 +65,25 @@ class Registro2 extends Generico2 {
         if (empty($this->data))
             parent::__construct($data);
     }
+
     protected function set_mensagem_1($value)
     {
         $mensagem = (!empty($this->entryData['mensagem']))?explode(PHP_EOL,$this->entryData['mensagem']):array();
         $this->data['mensagem_1'] = count($mensagem)>=1?$mensagem[0]:' ';
     }
+
     protected function set_mensagem_2($value)
     {
         $mensagem = (!empty($this->entryData['mensagem']))?explode(PHP_EOL,$this->entryData['mensagem']):array();
         $this->data['mensagem_2'] = count($mensagem)>=2?$mensagem[1]:' ';
     }
+
     protected function set_mensagem_3($value)
     {
         $mensagem = (!empty($this->entryData['mensagem']))?explode(PHP_EOL,$this->entryData['mensagem']):array();
         $this->data['mensagem_3'] = count($mensagem)>=3?$mensagem[2]:' ';
     }
+
     protected function set_mensagem_4($value)
     {
         $mensagem = (!empty($this->entryData['mensagem']))?explode(PHP_EOL,$this->entryData['mensagem']):array();
@@ -87,36 +91,37 @@ class Registro2 extends Generico2 {
     }
 
     protected function get_nosso_numero() {
-        $modulo11 = self::modulo11(str_pad(RemessaAbstract::$entryData['agencia'], 4, 0, STR_PAD_LEFT)
-                        . str_pad(RemessaAbstract::$entryData['posto'], 2, 0, STR_PAD_LEFT)
-                        . str_pad(RemessaAbstract::$entryData['codigo_beneficiario'], 5, 0, STR_PAD_LEFT)
-                        . str_pad(strftime("%y", strtotime($this->entryData['data_emissao'])), 2, 0, STR_PAD_LEFT)
-                        . 2
-                        . str_pad($this->data['nosso_numero'], 5, 0, STR_PAD_LEFT));
-        return strftime("%y", strtotime($this->entryData['data_emissao'])) . 2 . str_pad($this->data['nosso_numero'], 5, 0, STR_PAD_LEFT) . $modulo11['digito'];
+        $byte = isset(RemessaAbstract::$entryData['byte']) ? (int) RemessaAbstract::$entryData['byte'] : 2;
+
+        $ano = date('y', strtotime($this->entryData['data_emissao']));
+
+        $base = str_pad(RemessaAbstract::$entryData['agencia'], 4, '0', STR_PAD_LEFT)
+            . str_pad(RemessaAbstract::$entryData['posto'], 2, '0', STR_PAD_LEFT)
+            . str_pad(RemessaAbstract::$entryData['codigo_beneficiario'], 5, '0', STR_PAD_LEFT)
+            . str_pad($ano, 2, '0', STR_PAD_LEFT)
+            . $byte
+            . str_pad($this->data['nosso_numero'], 5, '0', STR_PAD_LEFT);
+
+        $modulo11 = self::modulo11($base);
+
+        return $ano . $byte . str_pad($this->data['nosso_numero'], 5, '0', STR_PAD_LEFT) . $modulo11['digito'];
     }
 
     protected static function modulo11($num, $base = 9) {
         $fator = 2;
 
         $soma = 0;
-        // Separacao dos numeros.
         for ($i = strlen($num); $i > 0; $i--) {
-            //  Pega cada numero isoladamente.
             $numeros[$i] = substr($num, $i - 1, 1);
-            //  Efetua multiplicacao do numero pelo falor.
             $parcial[$i] = $numeros[$i] * $fator;
-            //  Soma dos digitos.
             $soma += $parcial[$i];
             if ($fator == $base) {
-                //  Restaura fator de multiplicacao para 2.
                 $fator = 1;
             }
             $fator++;
         }
         $result = array(
             'digito' => ($soma * 10) % 11,
-            // Remainder.
             'resto' => $soma % 11,
         );
         if ($result['digito'] == 10) {

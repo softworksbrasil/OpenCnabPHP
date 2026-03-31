@@ -1,7 +1,7 @@
 <?php
 
 /*
- * CnabPHP - GeraÃ§Ã£o de arquivos de remessa e retorno em PHP
+ * CnabPHP - Geração de arquivos de remessa e retorno em PHP
  *
  * LICENSE: The MIT License (MIT)
  *
@@ -40,7 +40,7 @@ class Registro1 extends Generico1 {
             'tipo' => 'int',
             'required' => true
         ),
-        'cod_carteira' => array( //13.3P
+        'cod_carteira' => array(
             'tamanho' => 1,
             'default' => ' ',
             'tipo' => 'alfa',
@@ -70,7 +70,7 @@ class Registro1 extends Generico1 {
             'tipo' => 'alfa',
             'required' => true
         ),
-        'boleto_DDA' => array( //13.3P
+        'boleto_DDA' => array(
             'tamanho' => 1,
             'default' => '2',
             'tipo' => 'int',
@@ -94,15 +94,15 @@ class Registro1 extends Generico1 {
             'tipo' => 'alfa',
             'required' => true
         ),
-        'codigo_movimento' => array( // codigo da ocorrencia
+        'codigo_movimento' => array(
             'tamanho' => 2,
-            'default' => '02', // entrada de titulo
+            'default' => '02',
             'tipo' => 'alfa',
             'required' => true
         ),
-        'data_ocorrencia' => array( // data da ocorrencia
+        'data_ocorrencia' => array(
             'tamanho' => 6,
-            'default' => ' ', // entrada de titulo
+            'default' => ' ',
             'tipo' => 'date',
             'required' => true
         ),
@@ -118,14 +118,14 @@ class Registro1 extends Generico1 {
             'tipo' => 'alfa',
             'required' => true
         ),
-        'data_vencimento' => array( //26.3P
+        'data_vencimento' => array(
             'tamanho' => 6,
             'default' => ' ',
             'tipo' => 'date',
             'required' => true
         ),
-        'valor' => array( //21.3P
-            'tamanho' => 11,
+        'valor' => array(
+            'tamanho' => 13,
             'default' => '0',
             'tipo' => 'decimal',
             'precision' => 2,
@@ -137,21 +137,21 @@ class Registro1 extends Generico1 {
             'tipo' => 'alfa',
             'required' => true
         ),
-        'especie_titulo' => array( //24.3P
+        'especie_titulo' => array(
             'tamanho' => 1,
             'default' => 'J',
             'tipo' => 'alfa',
             'required' => true
         ),
         'vlr_despesas_cobranca' => array(
-            'tamanho' => 11,
+            'tamanho' => 13,
             'default' => '0',
             'tipo' => 'decimal',
             'precision' => 2,
             'required' => true
         ),
         'vlr_despesas_protesto' => array(
-            'tamanho' => 11,
+            'tamanho' => 13,
             'default' => '0',
             'tipo' => 'decimal',
             'precision' => 2,
@@ -164,35 +164,35 @@ class Registro1 extends Generico1 {
             'required' => true
         ),
         'vlr_abatimento' => array(
-            'tamanho' => 11,
+            'tamanho' => 13,
             'default' => '0',
             'tipo' => 'decimal',
             'precision' => 2,
             'required' => true
         ),
         'vlr_desconto' => array(
-            'tamanho' => 11,
+            'tamanho' => 13,
             'default' => '0',
             'tipo' => 'decimal',
             'precision' => 2,
             'required' => true
         ),
-        'vlr_pago' => array( //12.3Q
-            'tamanho' => 11,
+        'vlr_pago' => array(
+            'tamanho' => 13,
             'default' => '0',
             'tipo' => 'decimal',
             'precision' => 2,
             'required' => true
         ),
-        'vlr_juros_mora' => array( // 8.3Q
-            'tamanho' => 11,
+        'vlr_juros_mora' => array(
+            'tamanho' => 13,
             'default' => '0',
             'tipo' => 'decimal',
             'precision' => 2,
             'required' => true
         ),
-        'vlr_multa' => array( // 8.3Q
-            'tamanho' => 11,
+        'vlr_multa' => array(
+            'tamanho' => 13,
             'default' => '0',
             'tipo' => 'decimal',
             'precision' => 2,
@@ -204,25 +204,25 @@ class Registro1 extends Generico1 {
             'tipo' => 'alfa',
             'required' => true
         ),
-        'ocorrencia_19' => array( //24.3P
+        'ocorrencia_19' => array(
             'tamanho' => 1,
             'default' => ' ',
             'tipo' => 'alfa',
             'required' => true
         ),
-        'filler45' => array( //24.3P
+        'filler45' => array(
             'tamanho' => 23,
             'default' => ' ',
             'tipo' => 'alfa',
             'required' => true
         ),
-        'motivo_rejeicao' => array( //10.3Q
+        'motivo_rejeicao' => array(
             'tamanho' => 10,
             'default' => '00',
             'tipo' => 'alfa',
             'required' => true
         ),
-        'data_credito' => array( //26.3P
+        'data_credito' => array(
             'tamanho' => 8,
             'default' => '',
             'tipo' => 'date',
@@ -234,7 +234,7 @@ class Registro1 extends Generico1 {
             'tipo' => 'alfa',
             'required' => true
         ),
-        'numero_registro' => array( // 4.3R
+        'numero_registro' => array(
             'tamanho' => 6,
             'default' => '0',
             'tipo' => 'int',
@@ -246,22 +246,11 @@ class Registro1 extends Generico1 {
         parent::__construct($linhaTxt);
 
         RetornoAbstract::$linesCounter++;
-        //$this->inserirDetalhe();
     }
-
-    /*
-      metodo get_R3U
-      metodo que espõe esse registro como se fosse o R3U da caixa
-     */
 
     public function get_R3U() {
         return $this;
     }
-
-    /*
-      metodo get_vlr_liquido
-      metodo que espõe esse vlr_liquido como se fosse o da caixa
-     */
 
     public function get_vlr_liquido() {
         return $this->vlr_pago;

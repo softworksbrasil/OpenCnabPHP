@@ -21,13 +21,13 @@ class Registro1 extends Generico1 {
             'tipo' => 'alfa',
             'required' => true
         ),
-        'tipo_carteira' => array( // nomeado assim por ser uma constante para arquivos com registro, e o declinio de sem registro e impressão pelo banco
+        'tipo_carteira' => array(
             'tamanho' => 1,
             'default' => 'A',
             'tipo' => 'alfa',
             'required' => true
         ),
-        'tipo_impressao' => array( // fixo 'A' para impressão normal, aparentemente só usado se for impressão pelo banco
+        'tipo_impressao' => array(
             'tamanho' => 1,
             'default' => 'A',
             'tipo' => 'alfa',
@@ -45,13 +45,13 @@ class Registro1 extends Generico1 {
             'tipo' => 'alfa',
             'required' => true
         ),
-        'tipo_desconto' => array( // fixo 'B' por percentual, se quizer mudar inclua no array inserirDetalhe com a instrução 'A'
+        'tipo_desconto' => array(
             'tamanho' => 1,
             'default' => 'B',
             'tipo' => 'alfa',
             'required' => false
         ),
-        'tipo_juros' => array( // fixo 'B' por percentual, se quizer mudar inclua no array inserirDetalhe com a instrução 'A'
+        'tipo_juros' => array(
             'tamanho' => 1,
             'default' => 'B',
             'tipo' => 'alfa',
@@ -99,7 +99,7 @@ class Registro1 extends Generico1 {
             'tipo' => 'alfa',
             'required' => true
         ),
-        'emissao_boleto' => array( // impressão do boleto pelo cliente
+        'emissao_boleto' => array(
             'tamanho' => 1,
             'default' => 'B',
             'tipo' => 'alfa',
@@ -143,7 +143,7 @@ class Registro1 extends Generico1 {
             'tipo' => 'alfa',
             'required' => true
         ),
-        'codigo_movimento' => array( // 2 = ignora
+        'codigo_movimento' => array(
             'tamanho' => 2,
             'default' => '1',
             'tipo' => 'int',
@@ -329,9 +329,9 @@ class Registro1 extends Generico1 {
             $this->children[] = new $class($data);
         }
     }
-   
+
     public function set_emissao_boleto($value) {
-        $this->data['emissao_boleto'] = $value == 2 ? "B" : 'A';  // 1 igual A =  emissão pelo banco 2 igual B = emissão pelo cedente
+        $this->data['emissao_boleto'] = $value == 2 ? "B" : 'A';
     }
 
     public function set_protestar($value) {
@@ -346,37 +346,64 @@ class Registro1 extends Generico1 {
         $this->data['data_instrucao'] = date('Y-m-d');
     }
 
+    protected function set_seu_numero($value) {
+        $saneado = trim((string) $value);
+        if (strlen($saneado) > 10) {
+            throw new \Exception('Sicredi CNAB 400: seu_numero nao pode ultrapassar 10 caracteres. Valor informado: "' . $saneado . '"');
+        }
+        $this->data['seu_numero'] = $saneado;
+    }
+
     protected function set_nosso_numero($value) {
-        $modulo11 = self::modulo11(str_pad(RemessaAbstract::$entryData['agencia'], 4, 0, STR_PAD_LEFT)
-                        . str_pad(RemessaAbstract::$entryData['posto'], 2, 0, STR_PAD_LEFT)
-                        . str_pad(RemessaAbstract::$entryData['codigo_beneficiario'], 5, 0, STR_PAD_LEFT)
-                        . str_pad(strftime("%y", strtotime($this->entryData['data_emissao'])), 2, 0, STR_PAD_LEFT)
-                        . 2
-                        . str_pad($value, 5, 0, STR_PAD_LEFT));
-        $this->data['nosso_numero'] = strftime("%y", strtotime($this->entryData['data_emissao'])) . 2 . str_pad($value, 5, 0, STR_PAD_LEFT) . $modulo11['digito'];
+        $posto = RemessaAbstract::$entryData['posto'] ?? null;
+        if (empty($posto) && $posto !== '0' && $posto !== 0) {
+            throw new \Exception('Sicredi CNAB 400: posto obrigatorio para calculo do nosso numero.');
+        }
+        $postoFormatado = str_pad((string) $posto, 2, '0', STR_PAD_LEFT);
+        if (!ctype_digit($postoFormatado)) {
+            throw new \Exception('Sicredi CNAB 400: posto deve ser numerico.');
+        }
+
+        $codigoBeneficiario = RemessaAbstract::$entryData['codigo_beneficiario'] ?? null;
+        if (empty($codigoBeneficiario)) {
+            throw new \Exception('Sicredi CNAB 400: codigo_beneficiario obrigatorio (5 digitos).');
+        }
+        $beneficiarioFormatado = str_pad((string) $codigoBeneficiario, 5, '0', STR_PAD_LEFT);
+        if (strlen(ltrim($beneficiarioFormatado, '0')) > 5 || !ctype_digit($beneficiarioFormatado)) {
+            throw new \Exception('Sicredi CNAB 400: codigo_beneficiario invalido.');
+        }
+
+        $byte = isset(RemessaAbstract::$entryData['byte']) ? (int) RemessaAbstract::$entryData['byte'] : 2;
+
+        $ano = date('y', strtotime($this->entryData['data_emissao']));
+
+        $base = str_pad(RemessaAbstract::$entryData['agencia'], 4, '0', STR_PAD_LEFT)
+            . $postoFormatado
+            . $beneficiarioFormatado
+            . str_pad($ano, 2, '0', STR_PAD_LEFT)
+            . $byte
+            . str_pad($value, 5, '0', STR_PAD_LEFT);
+
+        $modulo11 = self::modulo11($base);
+
+        $this->data['nosso_numero'] = $ano . $byte . str_pad($value, 5, '0', STR_PAD_LEFT) . $modulo11['digito'];
     }
 
     protected static function modulo11($num, $base = 9) {
         $fator = 2;
 
         $soma = 0;
-        // Separacao dos numeros.
         for ($i = strlen($num); $i > 0; $i--) {
-            //  Pega cada numero isoladamente.
             $numeros[$i] = substr($num, $i - 1, 1);
-            //  Efetua multiplicacao do numero pelo falor.
             $parcial[$i] = $numeros[$i] * $fator;
-            //  Soma dos digitos.
             $soma += $parcial[$i];
             if ($fator == $base) {
-                //  Restaura fator de multiplicacao para 2.
                 $fator = 1;
             }
             $fator++;
         }
         $result = array(
             'digito' => ($soma * 10) % 11,
-            // Remainder.
             'resto' => $soma % 11,
         );
         if ($result['digito'] == 10) {
